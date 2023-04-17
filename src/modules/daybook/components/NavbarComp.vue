@@ -6,7 +6,7 @@
         alt="Vue Logo"
         height="24"
         class="b-inline-block align-text-top mx-2"
-      />
+      /> Daybook
     </a>
 
     <div class="d-flex">

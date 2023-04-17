@@ -6,12 +6,24 @@
         <input 
         type="text"
         class="form-control"
-        placeholder="Buscar entrada">
+        placeholder="Buscar entrada"
+        v-model="term"/>
     </div>
+
+    <div class="mt-2 d-flex flex-colum">
+        <button class="btn btn-primary mx-3"
+        @click="$router.push({name:'entry', params: {id:'new'}})">
+            <i class="fa fa-plus-circle"></i>
+            Nueva entrada
+        </button>
+
+    </div>
+
     <div class="entry-scrollarea">
         <Entry
-        v-for="item in getEntriesByTerm"
-        :key="item" />
+        v-for="entry in entriesByTerm"
+        :key="entry.id" 
+        :entry="entry" />
     </div>
   </div>
 </template>
@@ -26,15 +38,19 @@ export default {
 
     components: {
         Entry: defineAsyncComponent( () => import('./EntryComp.vue'))
+
         
     },
 
     computed:{
-        ...mapGetters('journal',['getEntriesByTerm'])
+        ...mapGetters('journal',['getEntriesByTerm']),
+        entriesByTerm(){
+            return this.getEntriesByTerm(this.term)
+        }
     },
     data() {
         return {
-            term: 'hola mundo'
+            term: ''
         }
     },
 }
