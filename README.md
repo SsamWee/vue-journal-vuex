@@ -26,3 +26,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Extra setups
 
 npm install sweetalert2
+npm add axios
